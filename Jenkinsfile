@@ -1,9 +1,10 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Installing Packages') {
             steps {
                 echo 'Building..'
+                sh 'npm install'
             }
         }
         stage('Test') {
@@ -11,9 +12,10 @@ pipeline {
                 echo 'Testing..'
             }
         }
-        stage('Deploy') {
+        stage('Build Docker Image') {
             steps {
-                echo 'Deploying....'
+                echo 'Building docker image....'
+                sh 'docker build -t popcorn-movies-server .'
             }
         }
     }
