@@ -18,6 +18,6 @@ docker build -t $IMAGE .
 echo "****************************************************************"
 echo "PUSHING IMAGE TO DOCKERHUB"
 echo "****************************************************************"
-
+docker tag $IMAGE:latest pratikgaikwad/$IMAGE:latest
 docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 docker push pratikgaikwad/$IMAGE
