@@ -1,23 +1,23 @@
+IMAGE=$IMAGE_NAME
+
 echo "****************************************************************"
 echo "Removing the existing docker container for the popcorn-data-server"
 echo "****************************************************************"
-docker rm -f popcorn-data-server
+docker rm -f $IMAGE
 
 echo "****************************************************************"
 echo "Removing the existing docker image for the popcorn-data-server"
 echo "****************************************************************"
-docker rmi -f popcorn-data-server
+docker rmi -f $IMAGE
 
 echo "****************************************************************"
 echo "Building the docker image for the popcorn-data-server"
 echo "****************************************************************"
-docker build -t popcorn-data-server .
+docker build -t $IMAGE .
 
 echo "****************************************************************"
-echo "Running the docker container for the popcorn-data-server"
+echo "PUSHING IMAGE TO DOCKERHUB"
 echo "****************************************************************"
-docker run -d -v popcorn_images:/app/images -v popcorn_videos:/app/videos --network=pratik_network --name popcorn-data-server --rm popcorn-data-server
 
-echo "****************************************************************"
-echo "Docker container for the popcorn-data-server is running"
-echo "****************************************************************"
+docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+docker push pratikgaikwad/$IMAGE
