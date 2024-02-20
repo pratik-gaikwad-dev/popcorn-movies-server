@@ -16,7 +16,7 @@ docker build -t popcorn-data-server .
 echo "****************************************************************"
 echo "Running the docker container for the popcorn-data-server"
 echo "****************************************************************"
-docker run -d -p 8000:8000 -v popcorn_images:/app/images -v popcorn_videos:/app/videos --network=pratik_network --name popcorn-data-server --rm popcorn-data-server
+docker run -d -v popcorn_images:/app/images -v popcorn_videos:/app/videos --network=pratik_network --name popcorn-data-server --rm popcorn-data-server
 
 echo "****************************************************************"
 echo "Docker container for the popcorn-data-server is running"
