@@ -22,4 +22,13 @@ docker tag $IMAGE:latest pratikgaikwad/$IMAGE:latest
 docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 docker push pratikgaikwad/$IMAGE
 
-pwd
+echo "****************************************************************"
+echo "Restarting docker compose"
+echo "****************************************************************"
+cd /var/jenkins_home/popcorn
+
+docker compose down
+docker rmi $IMAGE
+docker compose pull
+docker compose up --force-recreate --build -d
+docker image prune -f
