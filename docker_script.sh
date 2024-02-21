@@ -1,3 +1,5 @@
+#!/bin/bash
+
 IMAGE=$IMAGE_NAME
 
 echo "****************************************************************"
@@ -18,9 +20,12 @@ docker build -t $IMAGE .
 echo "****************************************************************"
 echo "PUSHING IMAGE TO DOCKERHUB "
 echo "****************************************************************"
-docker tag $IMAGE:latest pratikgaikwad/$IMAGE:latest
+docker tag $IMAGE:$POPCORN_DATA_SERVER pratikgaikwad/$IMAGE:$POPCORN_DATA_SERVER
 docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 docker push pratikgaikwad/$IMAGE
+
+echo "export POPCORN_DATA_SERVER=$((POPCORN_DATA_SERVER + 1))" >> ~/.bashrc
+source ~/.bashrc
 
 echo "****************************************************************"
 echo "Restarting docker compose"
