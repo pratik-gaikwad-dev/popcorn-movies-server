@@ -20,7 +20,7 @@ docker build -t $IMAGE .
 echo "****************************************************************"
 echo "PUSHING IMAGE TO DOCKERHUB"
 echo "****************************************************************"
-docker tag $IMAGE:$POPCORN_DATA_SERVER pratikgaikwad/$IMAGE:$POPCORN_DATA_SERVER
+docker tag $IMAGE:$POPCORN_DATA_SERVER pratikgaikwad/$IMAGE:"$POPCORN_DATA_SERVER"
 docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 docker push pratikgaikwad/$IMAGE
 
