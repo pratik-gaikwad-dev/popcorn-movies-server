@@ -49,7 +49,7 @@ app.post("/uploadimage", uploadImage.single("file"), async (req, res) => {
     res.status(400).json({ msg: "No file found" });
   }
   res.json({
-    filePath: `http://localhost:8000/${req.file.filename}`,
+    filePath: `http://popcorndataserver.movizrate.cloud/${req.file.filename}`,
     fileName: req.file.filename,
     msg: "Image uploaded",
   });
@@ -60,7 +60,7 @@ app.post("/uploadmovie", uploadMovie.single("file"), function (req, res) {
     res.status(400).json({ msg: "No file found" });
   }
   res.json({
-    filePath: `http://localhost:8000/${req.file.filename}`,
+    filePath: `http://popcorndataserver.movizrate.cloud/${req.file.filename}`,
     fileName: req.file.filename,
     msg: "Video uploaded",
   });
