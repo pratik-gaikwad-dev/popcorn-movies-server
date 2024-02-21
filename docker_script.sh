@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE=$IMAGE_NAME
+echo "export IMAGE=$IMAGE_NAME" >> ~/.bashrc
 
 echo "****************************************************************"
 echo "Removing the existing docker container for the popcorn-data-server"
