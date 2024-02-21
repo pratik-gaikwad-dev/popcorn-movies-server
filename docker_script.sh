@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "export IMAGE=$IMAGE_NAME" >> ~/.bashrc
+IMAGE=$IMAGE_NAME
 
 echo "****************************************************************"
 echo "Removing the existing docker container for the popcorn-data-server"
@@ -18,16 +18,12 @@ echo "****************************************************************"
 docker build -t $IMAGE .
 
 echo "****************************************************************"
-echo "PUSHING IMAGE TO DOCKERHUB "
+echo "PUSHING IMAGE TO DOCKERHUB"
 echo "****************************************************************"
-docker tag $IMAGE:$POPCORN_DATA_SERVER pratikgaikwad/$IMAGE:"$POPCORN_DATA_SERVER"
+docker tag $IMAGE:latest pratikgaikwad/$IMAGE:latest
 docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 docker push pratikgaikwad/$IMAGE
 
-echo "tag $IMAGE:$POPCORN_DATA_SERVER pratikgaikwad/$IMAGE:$POPCORN_DATA_SERVER"
-echo "export POPCORN_DATA_SERVER=$((POPCORN_DATA_SERVER + 1))" >> ~/.bashrc
-source ~/.bashrc
-echo "After tag $IMAGE:$POPCORN_DATA_SERVER pratikgaikwad/$IMAGE:$POPCORN_DATA_SERVER"
 echo "****************************************************************"
 echo "Restarting docker compose"
 echo "****************************************************************"
