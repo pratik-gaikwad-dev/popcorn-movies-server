@@ -24,9 +24,10 @@ docker tag $IMAGE:$POPCORN_DATA_SERVER pratikgaikwad/$IMAGE:$POPCORN_DATA_SERVER
 docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 docker push pratikgaikwad/$IMAGE
 
+echo "tag $IMAGE:$POPCORN_DATA_SERVER pratikgaikwad/$IMAGE:$POPCORN_DATA_SERVER"
 echo "export POPCORN_DATA_SERVER=$((POPCORN_DATA_SERVER + 1))" >> ~/.bashrc
 source ~/.bashrc
-
+echo "After tag $IMAGE:$POPCORN_DATA_SERVER pratikgaikwad/$IMAGE:$POPCORN_DATA_SERVER"
 echo "****************************************************************"
 echo "Restarting docker compose"
 echo "****************************************************************"
