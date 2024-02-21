@@ -66,4 +66,8 @@ app.post("/uploadmovie", uploadMovie.single("file"), function (req, res) {
   });
 });
 
+app.get("/", (req, res) => {
+  res.send("POPCORN DATA SERVER")
+})
+
 app.listen(PORT, () => console.log(`Server listening on port: ${PORT}`));
