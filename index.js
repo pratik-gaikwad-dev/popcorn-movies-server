@@ -8,12 +8,6 @@ app.use("", express.static("videos"));
 app.use("", express.static("images"));
 app.use(cors());
 
-app.all('/', function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  next();
- });
-
 // Code for upload image using multer
 const storageImage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -54,8 +48,9 @@ app.post("/uploadimage", uploadImage.single("file"), async (req, res) => {
   if (req.file === null) {
     res.status(400).json({ msg: "No file found" });
   }
+  res.set('Access-Control-Allow-Origin', '*');
   res.json({
-    filePath: `http://popcorndataserver.movizrate.cloud/${req.file.filename}`,
+    filePath: `http://localhost:8000/${req.file.filename}`,
     fileName: req.file.filename,
     msg: "Image uploaded",
   });
@@ -65,15 +60,12 @@ app.post("/uploadmovie", uploadMovie.single("file"), function (req, res) {
   if (req.file === null) {
     res.status(400).json({ msg: "No file found" });
   }
+  res.set('Access-Control-Allow-Origin', '*');
   res.json({
-    filePath: `http://popcorndataserver.movizrate.cloud/${req.file.filename}`,
+    filePath: `http://localhost:8000/${req.file.filename}`,
     fileName: req.file.filename,
     msg: "Video uploaded",
   });
 });
-
-app.get("/", (req, res) => {
-  res.send("POPCORN DATA SERVER")
-})
 
 app.listen(PORT, () => console.log(`Server listening on port: ${PORT}`));
