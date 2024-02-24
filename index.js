@@ -44,6 +44,10 @@ const storageMovie = multer.diskStorage({
 });
 const uploadMovie = multer({ storage: storageMovie });
 
+app.get("/", (req, res) => {
+  res.send("POPCORN DATA SERVER");
+})
+
 app.post("/uploadimage", uploadImage.single("file"), async (req, res) => {
   if (req.file === null) {
     res.status(400).json({ msg: "No file found" });
