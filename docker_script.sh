@@ -17,7 +17,7 @@ docker push pratikgaikwad/$IMAGE:$BUILD_ID
 echo "****************************************************************"
 echo "**************** Stoping previous containers *******************"
 echo "****************************************************************"
-docker stop popocorn-data -f
+docker stop popocorn-data
 
 echo "****************************************************************"
 echo "**************** Removing previous container *******************"
