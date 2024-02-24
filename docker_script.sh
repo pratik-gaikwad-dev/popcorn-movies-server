@@ -30,14 +30,14 @@ echo "****************************************************************"
 docker stop popocorn-data
 
 echo "****************************************************************"
-echo "**************** Removing previous image *******************"
-echo "****************************************************************"
-docker image prune -a -f
-
-echo "****************************************************************"
 echo "*********************** Deploying Image ************************"
 echo "****************************************************************"
 docker run -d -p 8000:8000 --rm -v popcorn_popcorn_images:/app/images -v popcorn_popcorn_videos:/app/videos --network popcorn_network --name popocorn-data pratikgaikwad/$IMAGE:$BUILD_ID
+
+echo "****************************************************************"
+echo "**************** Removing previous image *******************"
+echo "****************************************************************"
+docker image prune -a -f
 
 
 
