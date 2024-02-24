@@ -15,14 +15,14 @@ IMAGE=$IMAGE_NAME
 echo "****************************************************************"
 echo "Building the docker image for the popcorn-data-server"
 echo "****************************************************************"
-docker build -t $IMAGE .
+docker build -t $IMAGE:$BUILD_ID .
 
 echo "****************************************************************"
 echo "PUSHING IMAGE TO DOCKERHUB"
 echo "****************************************************************"
 docker tag $IMAGE:$BUILD_ID pratikgaikwad/$IMAGE:$BUILD_ID
 docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-docker push pratikgaikwad/$IMAGE
+docker push pratikgaikwad/$IMAGE:$BUILD_ID
 
 
 
