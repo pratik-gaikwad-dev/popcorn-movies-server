@@ -2,16 +2,6 @@
 
 IMAGE=$IMAGE_NAME
 
-# echo "****************************************************************"
-# echo "Removing the existing docker container for the popcorn-data-server"
-# echo "****************************************************************"
-# docker rm -f $IMAGE
-
-# echo "****************************************************************"
-# echo "Removing the existing docker image for the popcorn-data-server"
-# echo "****************************************************************"
-# docker rmi -f $IMAGE
-
 echo "****************************************************************"
 echo "***** Building the docker image for the popcorn-data-server ****"
 echo "****************************************************************"
@@ -27,7 +17,12 @@ docker push pratikgaikwad/$IMAGE:$BUILD_ID
 echo "****************************************************************"
 echo "**************** Stoping previous containers *******************"
 echo "****************************************************************"
-docker stop popocorn-data
+docker stop popocorn-data -f
+
+echo "****************************************************************"
+echo "**************** Removing previous container *******************"
+echo "****************************************************************"
+docker rm popocorn-data -f
 
 echo "****************************************************************"
 echo "*********************** Deploying Image ************************"
