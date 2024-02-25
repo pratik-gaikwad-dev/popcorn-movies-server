@@ -45,7 +45,7 @@ const storageMovie = multer.diskStorage({
 const uploadMovie = multer({ storage: storageMovie });
 
 app.get("/", (req, res) => {
-  res.send("POPCORN DATA SERVER IS RUNNING");
+  res.send("POPCORN DATA SERVER IS RUNNING HELTHY");
 })
 
 app.post("/uploadimage", uploadImage.single("file"), async (req, res) => {
